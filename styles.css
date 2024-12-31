@@ -1,0 +1,367 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-top: 20px; /* Ajuste opcional para pantallas más grandes */
+}
+  
+  /* Contenedor principal */
+  .container {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0; /* Eliminamos el padding extra */
+    transform: translateY(-10%); /* Subimos todo el contenedor hacia arriba */
+  }
+  .game {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alineamos el contenido hacia arriba */
+    align-items: center;
+    gap: 20px;
+  }
+  /* Título y descripción */
+  .game-title {
+    font-size: 36px;
+    color: #00ffff;
+    text-shadow: 0 0 15px #00ffff;
+    margin-bottom: 20px;
+  }
+  
+  .game-description {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 30px;
+  }
+  
+/* Portal mejorado */
+.portal {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 20px auto;
+    overflow: hidden;
+    animation: spin 4s linear infinite, glow 2s ease-in-out infinite;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.4), rgba(0, 0, 0, 0));
+    box-shadow: 0 0 30px #00ffff, 0 0 50px #00ffff;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  /* Efecto de rayos dinámicos */
+  .portal::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 300%;
+    height: 300%;
+    background: conic-gradient(
+      from 0deg,
+      rgba(0, 255, 255, 0.1),
+      rgba(255, 0, 255, 0.2),
+      rgba(0, 255, 255, 0.1)
+    );
+    animation: rays 6s linear infinite;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  /* Efecto de energía en el centro */
+  .portal::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.8), rgba(0, 0, 0, 0));
+    animation: pulse 3s infinite ease-in-out;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+  }
+  
+  /* Animación del portal */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 30px #00ffff, 0 0 50px #00ffff;
+    }
+    50% {
+      box-shadow: 0 0 60px #ff00ff, 0 0 80px #ff00ff;
+    }
+  }
+  
+  @keyframes rays {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+  }
+  
+  /* Interacción con el portal */
+  .portal:hover {
+    transform: scale(1.3);
+    box-shadow: 0 0 80px #ff00ff, 0 0 100px #ff00ff;
+  }
+  
+  /* Partículas flotantes */
+  .particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: float 3s infinite ease-in-out;
+    z-index: 1; /* Asegurarse de que estén sobre el fondo */
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(15px, -15px);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+  
+  /* Botones */
+  .btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #00ffff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #008080;
+    transform: scale(1.05);
+  }
+  .btn:active {
+    transform: scale(0.95);
+  }
+  
+  /* Pregunta y respuestas */
+  .question {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .answer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .answer-buttons .btn {
+    background: rgba(0, 255, 255, 0.2);
+    border: 1px solid #00ffff;
+    color: #fff;
+    text-shadow: 0 0 10px #00ffff;
+    padding: 10px;
+  }
+  
+  .answer-buttons .btn:hover {
+    background: rgba(0, 255, 255, 0.5);
+    transform: scale(1.05);
+  }
+  
+  /* Resultados */
+  #result-container {
+    margin-top: 30px;
+  }
+  .correct {
+    background-color: #00ff00 !important;
+    animation: correctFeedback 0.5s ease-out;
+  }
+  
+  .wrong {
+    background-color: #ff0000 !important;
+    animation: wrongFeedback 0.5s ease-out;
+  }
+  
+  @keyframes correctFeedback {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes wrongFeedback {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Estilo del popup */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 80%;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #00ffff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3);
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1000;
+  }
+  
+  /* Mostrar el popup */
+  .popup.show {
+    transform: translate(-50%, -50%) scale(1);
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* Contenido del popup */
+  .popup-content h3 {
+    font-size: 24px;
+    color: #00ffff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #00ffff;
+  }
+  
+  .popup-content p {
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  /* Botón de cierre */
+  .popup .btn {
+    background: linear-gradient(90deg, #00ffff, #008080);
+    color: #000;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .popup .btn:hover {
+    background: linear-gradient(90deg, #ff00ff, #800080);
+    transform: scale(1.1);
+  }
+  
+  /* Ocultar elementos */
+  .hide {
+    display: none;
+  }
+  /* Responsividad */
+@media (max-width: 768px) {
+  .game {
+    gap: 15px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .question {
+    font-size: 18px;
+  }
+
+  .game-title {
+    font-size: 24px;
+  }
+
+  .game-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .portal {
+    width: 150px;
+    height: 150px;
+  }
+}
+.popup-content .justification {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #a8d5e2; /* Azul claro */
+  font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+
+

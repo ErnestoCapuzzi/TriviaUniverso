@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datos curiosos del Universo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Fondo del juego -->
+    <div class="background">
+      <canvas id="stars"></canvas>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="game">
+      <h1 class="game-title">🌌 El Universo 🌌</h1>
+      <p class="game-description">El conocimiento es una paradoja, entre màs entendemos, màs nos damos cuenta de la inmensidad de nuestra ignorancia. </p>
+      
+      <!-- Contenedor de preguntas -->
+      <div id="question-container" class="hide">
+        <div id="portal">
+          <!-- Portal animado -->
+          <div class="portal"></div>
+        </div>
+
+        <h2 id="question" class="question">Pregunta aquí</h2>
+        <div id="answer-buttons" class="answer-buttons"></div>
+        <button id="next-btn" class="btn hide">Siguiente</button>
+      </div>
+
+      <!-- Botón de inicio -->
+      <button id="start-btn" class="btn">Comenzar Misión</button>
+
+      <!-- Contenedor de resultados -->
+      <div id="result-container" class="hide">
+        <h2 id="final-score">Puntaje Final: 0</h2>
+        
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
